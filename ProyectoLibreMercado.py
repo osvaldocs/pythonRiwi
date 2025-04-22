@@ -9,7 +9,6 @@ producto = str(input())
 
 print("Por favor ingrese el precio unitario:")
 precio = int(input())
-s
 while precio < 1:
     print("INGRESE UN PRECIO REAL:")
     precio = int(input())
