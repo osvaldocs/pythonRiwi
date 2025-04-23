@@ -1,36 +1,34 @@
 import math
 
+print("*" * 40)
 print("Bienvenido a Libre Mercado")
+print("*" * 40)
 print()
 
+# Pedimos al usuario que complete los datos requeridos como nombre del producto, precio, etc.
+producto = str(input("Ingrese el nombre del producto:"))
 
-print("Ingrese el nombre del producto:")
-producto = str(input())
+precio = int(input("Por favor ingrese el precio unitario:"))
 
-print("Por favor ingrese el precio unitario:")
-precio = int(input())
+#Condicionamos el valor ingresado a un valor válido con el bucle while
 while precio < 1:
-    print("INGRESE UN PRECIO REAL:")
-    precio = int(input())
+    precio = int(input("INGRESE UN PRECIO REAL:"))
 
-print("Por favor ingrese la cantidad de productos:")
-cantidad = int(input())
+cantidad = int(input("Por favor ingrese la cantidad de productos:"))
 
 while cantidad < 1:
-    print("Ingrese una cantidad válida:")
-    cantidad = int(input())
+    cantidad = int(input("Ingrese una cantidad válida:"))
 
-print("Por favor ingrese el porcentaje de descuento:")
-descuento = int(input())
+
+descuento = int(input("Por favor ingrese el porcentaje de descuento:"))
 
 while descuento < 1 or descuento > 100:
-    print("INGRESE UN DESCUENTO RAZONABLE:")
-    descuento = int(input())
+    descuento = int(input("INGRESE UN DESCUENTO RAZONABLE:"))
 
-
+#Creamos variables y realizamos los cálculos necesarios
 valorTotal = precio * cantidad
 porDescuento = valorTotal * descuento /100
 valorFinal = valorTotal - porDescuento
 
+#Se imprime el nombre, valor del ítem y el porcentaje de descuento
 print(f"El precio total por  {cantidad}   {producto} es: {valorFinal}")
-
