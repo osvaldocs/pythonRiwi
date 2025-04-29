@@ -1,10 +1,9 @@
-import random
-#5. Adivina el numero
+#3. Tabla de multiplicar
 
-numRandom = random.randint(1, 4)
+numero = int(input("Ingresa un numero positivo:"))
 
-numero = int(input("Ingrese un numero del 1 al 10"))
+while numero < 0:
+  numero = int(input("Ingresa un numero positivo:"))  
 
-intento = 0
-
-if numero < numRandom:
+for i in range(1, 11):
+    print(f"{numero} * i = (numero * i)")
