@@ -1,6 +1,10 @@
-#3. Tabla de multiplicar
+#1. Clasificador de numeros
 
-numero = int(input("Ingrese un numero:"))
+numero = int(input("Ingrese un numero entero"))
 
-for i in range(1,11):
-   print(f" {numero} * {i} es: " , numero * i)
+if numero < 0:
+   print("El numero es negativo")
+elif numero > 0:
+   print("El numero es positivo")
+else:
+      print("El numero es 0")
