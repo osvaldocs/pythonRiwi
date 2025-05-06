@@ -25,7 +25,5 @@ class SaludoIngles(Saludo):
         return f"Hello, {nombre}"
 
 # Uso:
-saludos = [SaludoEspañol(), SaludoIngles()]
 
-for saludo in saludos:
-    print(saludo.saludar("Elbio"))
+SaludoEspañol().saludar("Elbio")
