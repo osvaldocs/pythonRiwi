@@ -16,7 +16,7 @@ class Saludo:
     def saludar(self, nombre):
         pass
 
-class SaludoEspanol(Saludo):
+class SaludoEspañol(Saludo):
     def saludar(self, nombre):
         return f"Hola, {nombre}"
 
@@ -25,7 +25,7 @@ class SaludoIngles(Saludo):
         return f"Hello, {nombre}"
 
 # Uso:
-saludos = [SaludoEspanol(), SaludoIngles()]
+saludos = [SaludoEspañol(), SaludoIngles()]
 
 for saludo in saludos:
     print(saludo.saludar("Elbio"))
