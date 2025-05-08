@@ -85,7 +85,7 @@ def verInventario():
     copiasTotales = 0
 
     for libro in listaLibros:
-        copiasTotales = copiasTotales + libro.get["copias"]
+        copiasTotales = copiasTotales + libro.get("copias")
 
     print(f"The total copies in existence of the library are: {copiasTotales} ")
 
