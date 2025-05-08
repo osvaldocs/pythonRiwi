@@ -73,7 +73,7 @@ def listarLibro():
             opcion =  "Children"
 
     for libro in listaLibros:
-        if libro[genero] == opcion:
+        if libro["genero"] == opcion:
             print(libro["titulo"])
         else:
             print("invalid option")
