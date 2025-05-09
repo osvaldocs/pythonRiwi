@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 
 import re
@@ -76,7 +75,11 @@ def consultarProductos(buscarProducto):
 
 
 def calcularValorInventario():
-    pass
+    precioInventario = 0
+    for producto in listaProductos:
+
+        precioInventario = producto["precio"] * producto["cantidad"] + precioInventario
+    return precioInventario
 
 def actualizarPrecios(nombre, NuevoPrecio):
     producto = consultarProductos(nombre)
@@ -92,7 +95,6 @@ def pedirNuevoPrecio():
         try:
             nuevoPrecio = float(input("Ingrese el precio nuevo del producto: "))
             return nuevoPrecio
-            break
         except ValueError:
             print("Ingrese un precio válido")
 
@@ -128,7 +130,7 @@ def menu():
                 nuevoPrecio = pedirNuevoPrecio()
                 actualizarPrecios(nombre, nuevoPrecio)
             case "5":
-                pass
+                print(f"El precio total del inventario es {calcularValorInventario()}")
             case "6":
                 print("Saliendo del programa.")
                 break
