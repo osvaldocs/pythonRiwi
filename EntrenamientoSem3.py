@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 import re
@@ -16,13 +17,14 @@ def añadirProducto(nombre, precio, cantidad):
     }
     listaProductos.append(producto)
 
-añadirProducto("Manzana", 3000, 40)
+añadirProducto("Manzana", 1600, 40)
+añadirProducto("Pera",1500,44)
 
 def ingresarDatosProducto():
 
     while True:
         nombreProducto = input("Ingrese el nombre del producto: ").strip()
-        if re.fullmatch(r"[A-Za-záéíóúÁÉÍÓÚñÑ]+", nombreProducto):
+        if re.fullmatch(r"[A-Za-záéíóúÁÉÍÓÚñÑ ]+", nombreProducto):
             break
         else:
             print("El nombre solo puede contener letras y espacios, sin números ni símbolos.")
@@ -76,9 +78,14 @@ def consultarProductos(buscarProducto):
 def calcularValorInventario():
     pass
 
-def actualizarPrecios(producto, NuevoPrecio):
-    busca = consultarProductos(buscarProducto)
-    #if busca
+def actualizarPrecios(nombre, NuevoPrecio):
+    producto = consultarProductos(nombre)
+    if producto:
+        producto["precio"] = NuevoPrecio
+        print(f"Precio actualizado correctamente. el nuevo precio de {producto['nombre']} es {producto['precio']} ")
+    else:
+        print("No existe el producto")
+
 
 def pedirNuevoPrecio():
     while True:
@@ -89,27 +96,41 @@ def pedirNuevoPrecio():
         except ValueError:
             print("Ingrese un precio válido")
 
-def eliminarProducto():
-    pass
+def eliminarProducto(nombreProductoEliminar):
+    producto = consultarProductos(nombreProductoEliminar)
+    if producto:
+         listaProductos.remove(producto)
+         print("Producto eliminado correctamente")
+    else:
+        print("No existe el producto")
 
+def menu():
+    while True:
+        opcion = input("Bienvenido a LibreMercado. Por favor ingrese una opción para continuar:\n"
+                       "1: Para añadir un producto\n"
+                       "2: Para buscar un producto\n"
+                       "3: Para eliminar un producto\n"
+                       "4: Para actualizar el precio de un producto\n"
+                       "5: Para calcular el valor del inventario\n"
+                       "6: Para salir\n")
 
-opcion = input("Bienvenido a LibreMercado. Por favor ingrese una opción para continuar:\n"
-               "1: Para añadir un producto\n"
-               "2: Para buscar un producto\n"
-               "3: Para eliminar un producto\n"
-               "4: Para actualirzar el precio de un producto\n"
-               "5: Para calcular el valor del inventario\n")
-
-match opcion:
-    case "1":
-        ingresarDatosProducto()
-
-    case "2":
-        buscarProductos = pedirNombreProducto()
-        consultarProductos(buscarProductos)
-
-    case "3":
-        pass
-
-    case "4":
-        pass
+        match opcion:
+            case "1":
+                ingresarDatosProducto()
+            case "2":
+                buscarProductos = pedirNombreProducto()
+                consultarProductos(buscarProductos)
+            case "3":
+                nombreEliminar = pedirNombreProducto()
+                eliminarProducto(nombreEliminar)
+            case "4":
+                nombre = pedirNombreProducto()
+                nuevoPrecio = pedirNuevoPrecio()
+                actualizarPrecios(nombre, nuevoPrecio)
+            case "5":
+                pass
+            case "6":
+                print("Saliendo del programa.")
+                break
+            case _:
+                print("Opcion inválida. intente nuevamente")
